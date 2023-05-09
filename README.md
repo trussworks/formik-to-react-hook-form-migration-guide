@@ -34,10 +34,12 @@ similar features and patterns, making migration less painful than you might thin
 
 ## Why?
 
-Formik is unmaintained with the last version at the time of writing published [over 2 years ago](https://www.npmjs.com/package/formik?activeTab=versions). 
+Formik is unmaintained with the last version at the time of writing published [over 2 years ago](https://www.npmjs.com/package/formik?activeTab=versions).
 It is only a matter of time before the project is more detrimental to include as a dependency than it is helpful.
-There may even come a time when Formik is no longer compatible with modern versions of Node or React=, or other meta
+There may even come a time when Formik is no longer compatible with modern versions of Node, React, or other meta
 frameworks.
+
+You can check for current security issues [here](https://snyk.io/advisor/npm-package/formik).
 
 React Hook Form has surpassed Formik in popularity based on [npm download statistics](https://www.npmjs.com/package/react-hook-form).
 While the JS ecosystem is certainly volatile, and the future of any library will always involve some degree of
