@@ -140,9 +140,8 @@ the form portions of your app.
   - Applying existing component tests to the new components is a great way to get an early feel for compatability, 
   before making user-facing changes.
 - Replace each Formik form (or form page in a multipage form) with a React Hook Form equivalent.
-  - Start small, simple, and low risk to build experience with React Hook Form while chipping away. Build confidence
-  with React Hook Form while learning which pieces are trickier or more time-consuming to better inform the refinement
-  of the rest of the migration effort
+  - Start small, simple, and low risk to build confidence with React Hook Form while learning which pieces are trickier 
+  or more time-consuming to better inform the refinement of the rest of the migration effort.
 
 ## Migration
 
