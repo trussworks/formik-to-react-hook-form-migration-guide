@@ -1,4 +1,4 @@
-# formik-to-react-hook-form-migration-guide
+# Formik to React Hook Form Migration Guide
 
 A guide for migrating projects to from [Formik](https://formik.org/) to [React Hook Form](https://react-hook-form.com/).
 
