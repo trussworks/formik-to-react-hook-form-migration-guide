@@ -12,6 +12,26 @@ examples, and of course your own application code.
 Migrating away from Formik appears to be a necessary eventuality. React Hook Form is an excellent alternative with
 similar features and patterns, making migration less painful than you might think.
 
+## Table of Contents
+- [Why?](#why)
+- [When?](#when)
+- [How?](#how)
+- [Strategy](#strategy)
+- [Migration](#migration)
+  - [Test Coverage](#test-coverage)
+  - [Form Components](#form-components)
+  - [Forms](#forms)
+  - [Cleanup](#cleanup)
+- [Migration Glossary](#migration-glossary)
+- [Key Differences](#key-differences)
+  - [Naming](#naming)
+  - [Rendering](#rendering)
+  - [Form validation](#form-validation)
+  - [Submission](#submission)
+  - [Validation Errors](#validation-errors)
+  - [User Event Tests](#user-event-tests)
+- [Disclaimer](#disclaimer)
+
 ## Why?
 
 Formik is unmaintained with the last version at the time of writing published [over 2 years ago](https://www.npmjs.com/package/formik?activeTab=versions). 
@@ -77,7 +97,7 @@ scanning the rest of the documentation as well. React Hook Form's [Get Started](
 documentation is a great entrypoint.
 
 
-### Migration Strategy
+## Strategy
 
 By now you've taken stock of how much code is impacted, and you have a general idea of where to start based on how you
 use Formik. What may not be obvious is how you should start, and what the migration looks like. Is it one PR? A 
@@ -112,12 +132,14 @@ the form portions of your app.
   - Applying existing component tests to the new components is a great way to get an early feel for compatability, 
   before making user-facing changes.
 - Replace each Formik form (or form page in a multipage form) with a React Hook Form equivalent.
-  - Start small, simple, and low risk to build experience with React Hook Form while chipping away.
+  - Start small, simple, and low risk to build experience with React Hook Form while chipping away. Build confidence
+  with React Hook Form while learning which pieces are trickier or more time-consuming to better inform the refinement
+  of the rest of the migration effort
 
 ## Migration
 
 By now you should have your Agile mise en place at the ready. You've evaluated your circumstances and broken down at
-least a few chunks of work to, even if just exploratory. What that looks like will be completely up to you, your team's
+least a few chunks of work, even if just exploratory. What that looks like will be completely up to you, your team's
 process and prioritization, and the forms that need to be rebuilt. Hopefully you've taken the advice in the earlier
 sections of this guide and focused prioritization and refinement on the smallest, least complex, and lowest-risk form
 first.
@@ -200,9 +222,9 @@ setting, and/or clearing fields) set up watches with the [`useWatch()`](https://
 until all unit tests pass
 6. Ensure your relevant user flows still work with integration and/or end-to-end tests, and manual testing
 
-### Cleanup 🚮
+### Cleanup
 
-1. Remove your dependency to Formik
+1. Remove your dependency to Formik 🚮
 2. Remove any references to (now hopefully unused) Formik-aware code
 3. Release and deploy a new version of your project free of Formik at last
 
@@ -222,10 +244,10 @@ this guide and add it!
 | [`useField()`](https://formik.org/docs/api/useField)                 | [`useController()`](https://react-hook-form.com/api/usecontroller/)                                                                                                    |                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 | [`useFormikContext()`](https://formik.org/docs/api/useFormikContext) | [`useFormContext()`](https://react-hook-form.com/api/useformcontext/) <br /> [`useFormState()`](https://react-hook-form.com/api/useformstate/) <br /> [`useWatch()`]() | `useFormContext()` provides access to everything that your top-level `useForm()` hook provides. This is where most of your utilties are for imperatively interacting with the form. <br /> `useFormState()` provides meta information about the form's current state (like touched state, errors, submitCount, validation status, etc. <br /> `useWatch()` enables realtime access to a field's value (see [rendering](#rendering) for more details) |
 
-There's a lot of hooks, components, utilities, terms, and techniques in each of these libraries. React Hook Form can get
-much more advanced than this guide covers. Make sure to check out official documentation for 
-[TypeScript support](https://react-hook-form.com/ts/) if you use it, and [advanced techniques](https://react-hook-form.com/advanced-usage/)
-if your use case isn't covered in this guide.
+There are a lot of hooks, components, utilities, terms, and techniques in each of these libraries. React Hook Form can get
+much more advanced than this guide covers. Make sure to check out official documentation for [TypeScript support](https://react-hook-form.com/ts/)
+if you use it, and [advanced techniques](https://react-hook-form.com/advanced-usage/) if your use case isn't covered in
+this guide.
 
 ## Key Differences
 
@@ -249,7 +271,7 @@ Where Formik renders _liberally_ by default, React Hook Form is optimized for fe
 know the realtime value of a React Hook Form managed field, React Hook Form's [`useWatch()`](https://react-hook-form.com/api/usewatch/)
 will enable that for you.
 
-#### Form validation
+### Form validation
 
 React Hook Form supports [native validations](https://react-hook-form.com/get-started/#Applyvalidation) for only the
 simplest (but likely most common) validation rules.
