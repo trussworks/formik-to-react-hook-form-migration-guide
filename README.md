@@ -12,6 +12,14 @@ examples, and of course your own application code.
 Migrating away from Formik appears to be a necessary eventuality. React Hook Form is an excellent alternative with
 similar features and patterns, making migration less painful than you might think.
 
+The following badge will show if there are known security vulnerabilities in the Formik library, which is a **strong** 
+signal that your migration should be a priority.
+
+[![Known Formik Vulnerabilities](https://snyk.io/test/github/{username}/{repo}/badge.svg)](https://snyk.io/test/github/jaredpalmer/formik)
+
+If not, it is still recommended to familiarize yourself with the migration process and begin formulating a plan to 
+migrate.
+
 ## Table of Contents
 - [Why?](#why)
 - [When?](#when)
@@ -38,8 +46,6 @@ Formik is unmaintained with the last version at the time of writing published [o
 It is only a matter of time before the project is more detrimental to include as a dependency than it is helpful.
 There may even come a time when Formik is no longer compatible with modern versions of Node, React, or other meta
 frameworks.
-
-You can check for current security issues [here](https://snyk.io/advisor/npm-package/formik).
 
 React Hook Form has surpassed Formik in popularity based on [npm download statistics](https://www.npmjs.com/package/react-hook-form).
 While the JS ecosystem is certainly volatile, and the future of any library will always involve some degree of
