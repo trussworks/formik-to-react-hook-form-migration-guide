@@ -42,7 +42,7 @@ migrate.
 
 ## Why?
 
-Formik is unmaintained with the last version at the time of writing published [over 2 years ago](https://www.npmjs.com/package/formik?activeTab=versions).
+Formik is unmaintained with the last version, at the time of writing, published [over 2 years ago](https://www.npmjs.com/package/formik?activeTab=versions).
 It is only a matter of time before the project is more detrimental to include as a dependency than it is helpful.
 There may even come a time when Formik is no longer compatible with modern versions of Node, React, or other meta
 frameworks.
