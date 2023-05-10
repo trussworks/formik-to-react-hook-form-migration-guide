@@ -143,7 +143,9 @@ the form portions of your app.
   - Start small, simple, and low risk to build confidence with React Hook Form while learning which pieces are trickier 
   or more time-consuming to better inform the refinement of the rest of the migration effort.
   - Consider that migrating a form is blocked by first migrating the form input components. If you have a form with only
-  one or two types of inputs (e.g. Text input and Radio input), 
+  one or two types of inputs (e.g. Text input and Radio input), you can enable parallel work streams by writing the 
+  React Hook Form versions of those components, and begin migrating a form while other members continue with the other 
+  components.
 
 Some high level user stories for this effort might be:
 
