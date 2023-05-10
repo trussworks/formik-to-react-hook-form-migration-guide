@@ -142,6 +142,27 @@ the form portions of your app.
 - Replace each Formik form (or form page in a multipage form) with a React Hook Form equivalent.
   - Start small, simple, and low risk to build confidence with React Hook Form while learning which pieces are trickier 
   or more time-consuming to better inform the refinement of the rest of the migration effort.
+  - Consider that migrating a form is blocked by first migrating the form input components. If you have a form with only
+  one or two types of inputs (e.g. Text input and Radio input), 
+
+Some high level user stories for this effort might be:
+
+- For each type of form component used:
+  > As an engineer,
+  > I want a React Hook Form compatible USWDS { TextInput | Dropdown | Multiselect | Radio | Checkbox } component
+  > so that I can insert it into React Hook Form controlled forms.
+- For the first form migration:
+  > As an engineer,
+  > I want the "contact us" form to use React Hook Form instead of Formik
+  > so that the team has a standalone example of migrating a user-facing form while making progress on the app-wide migration.
+- For any remaining forms:
+  > As an engineer,
+  > I want the { "log in" | "sign up" | "application" } form to use React Hook Form
+  > so that continued progress on the app-wide migration is made.
+- To complete the migration effort:
+  > As a product owner,
+  > I want the Formik dependency and all references removed from the application
+  > so that we can consider the migration complete, and not worry about Formik related incompatibilities or vulnerabilities.
 
 ## Migration
 
