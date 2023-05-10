@@ -15,7 +15,7 @@ similar features and patterns, making migration less painful than you might thin
 The following badge will show if there are known security vulnerabilities in the Formik library, which is a **strong** 
 signal that your migration should be a priority.
 
-[![Known Formik Vulnerabilities](https://snyk.io/test/github/{username}/{repo}/badge.svg)](https://snyk.io/test/github/jaredpalmer/formik)
+[![Known Formik Vulnerabilities](https://snyk.io/test/github/jaredpalmer/formik/badge.svg)](https://snyk.io/test/github/jaredpalmer/formik)
 
 If not, it is still recommended to familiarize yourself with the migration process and begin formulating a plan to 
 migrate.
