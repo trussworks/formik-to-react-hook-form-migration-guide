@@ -205,7 +205,7 @@ components that implement your form component will be straightforward:
 
 1. Create a copy of your custom Formik-aware component 
    - Follow your project's naming and organizational conventions.
-   - Know that the Formik-aware should be removed when the entire migration effort is completed (see [Cleanup](#cleanup) 
+   - Know that the Formik-aware component should be removed when the entire migration effort is completed (see [Cleanup](#cleanup) 
    for more details).
 2. Use the [Migration Glossary](#migration-glossary) to evaluate which Formik utilities will need to be replaced, and
 what to replace them with.
