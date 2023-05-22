@@ -1,6 +1,6 @@
 # Formik to React Hook Form Migration Guide
 
-A guide for migrating projects to from [Formik](https://formik.org/) to [React Hook Form](https://react-hook-form.com/).
+A guide for migrating projects from [Formik](https://formik.org/) to [React Hook Form](https://react-hook-form.com/).
 
 This guide will contain a lot of links and references to other libraries and documentation, but few code snippets of its
 own. This is simply a maintenance choice, knowing that the JS ecosystem moves fast, and it is always best to reference
@@ -98,11 +98,11 @@ React Hook Form's top-level [`useForm()`](https://react-hook-form.com/docs/usefo
 - If your form components implement `useField()`, you're going to use [`useController()`](https://react-hook-form.com/docs/usecontroller/)
 instead.
 
-> ℹ️ A full list of equivalent utilities, can be found in the [glossary](#migration-glossary) below.
+> ℹ️ A full list of equivalent utilities can be found in the [glossary](#migration-glossary) below.
 
 Of course when implementing a new library it's also a good idea to get a feel for all the functionality available by 
 scanning the rest of the documentation as well. React Hook Form's [Get Started](https://react-hook-form.com/get-started/)
-documentation is a great entrypoint.
+documentation is a great entry point.
 
 
 ## Strategy
@@ -123,16 +123,16 @@ infrastructure first. Breaking down the migration into manageable chunks is key.
 Keep the following in mind while breaking down the effort:
 - Formik and React Hook Form _can_ coexist within the same application, but it is _not_ recommended (and my not be 
 possible) to use both within the same form, depending on your implementation.
-- Form components can only be effectively controlled by one form library. It is _not_ recommended to attempt to make 
-contort your existing form components so that they can be used within the context of Formik or React Hook Form.
+- Form components can only be effectively controlled by one form library. It is _not_ recommended to attempt to 
+contort your existing form components so that they can be used within the context of Formik and React Hook Form.
 - The test coverage of individual form components, as well as the forms themselves, and the end-to-end flow involving
 affected forms will directly and proportionately increase your confidence in the changes being made.
-- Tests that are written for Formik-based pieces of the applications should be agnostic of the form library choice, and
+- Tests that are written for Formik-based pieces of the application should be agnostic of the form library choice, and
 therefore should not need to change outside of setup (context providing components and mocking, potentially) in unit
 tests.
 
 Given the context and constraints provided up until this point, and a little experimenting of our own, the ideal chunks
-we recommend evaluating are
+we recommend evaluating are:
 - Increasing test coverage to 100% (or as close as is pragmatic, knowing each untested path or permutation 
 increases the chance of leaking regressions), of component unit tests, and end-to-end or integration tests that exercise 
 the form portions of your app.
@@ -177,7 +177,7 @@ first.
 ### Test Coverage
 
 The rest of this guide assumes you've amped up test coverage wherever it might have been lacking, so we won't go into
-detail here. Do it if you need it, you'll thank yourself later.
+detail here. Do it if you need it. You'll thank yourself later.
 
 ### Form components
 
@@ -204,22 +204,22 @@ If you can stick to that goal, your existing unit tests will largely be transfer
 components that implement your form component will be straightforward:
 
 1. Create a copy of your custom Formik-aware component 
-   - Follow your project's naming and organizational conventions
-   - Know that the Formik-aware should be removed when the entire migration effort is completed (see [Cleanup](#cleanup) 
-   for more details)
+   - Follow your project's naming and organizational conventions.
+   - Know that the Formik-aware component should be removed when the entire migration effort is completed (see [Cleanup](#cleanup) 
+   for more details).
 2. Use the [Migration Glossary](#migration-glossary) to evaluate which Formik utilities will need to be replaced, and
-what to replace them with
+what to replace them with.
 3. Whether you choose to take a TDD approach or not, setting up your unit tests to run against the React Hook Form 
 version of your component is the fastest way to create a tight feedback loop on your progress. 
    - It is recommended to do this as soon as you are able to. 
    - Understandably, especially if context providers and mocking are involved, and you are new to React Hook Form, you
-   may not be able to do this confidently
+   may not be able to do this confidently.
    - If you use [Storybook](https://storybook.js.org/), it can also be a great way to manually sanity test your
-   component with a reasonable feedback loop
+   component with a reasonable feedback loop.
 4. Replace Formik hooks and utilities with the React Hook Form equivalents, extract the necessary return props, and 
-ensure they are properly wired into your resulting markup 
+ensure they are properly wired into your resulting markup.
 5. Once all Formik references have been removed, iterate on your tests and the component as necessary until all tests
-pass
+pass.
 
 ### Forms
 
@@ -238,25 +238,25 @@ Similar to the [Component Migration](#form-components) section, let's set a goal
 1. No matter how your form is built, you'll need to start with React Hook Form's [`useForm()`](https://react-hook-form.com/docs/useform/)
 hook. At this point you'll set up your initial/default values, [schema validation](#form-validation), default behaviors,
 and [submit handlers](#submission).
-2. Register your fields with React Hook Form
+2. Register your fields with React Hook Form.
    - If your form uses inlined inputs with the Formik `<Field />`, use the `useForm()` [`register`](https://react-hook-form.com/docs/useform/register/)
    utility instead. Depending on the complexity of your form, that may be all you need to do!
    - If your form uses custom components, update your imports to point to the React Hook Form versions you created in 
    the previous section. 
 3. If your form needs to be aware of realtime user entry, rather than on submit (e.g. conditionally hiding, showing, 
 setting, and/or clearing fields) set up watches with the [`useWatch()`](https://react-hook-form.com/docs/usewatch/) hook.
-4. Start relying on your feedback loops by updating and running your unit tests
+4. Start relying on your feedback loops by updating and running your unit tests.
    - If you use Storybook, this is also a good time to start manual smoke testing. 
    - You may also want to try running the app at this point and begin manual smoke testing
 5. Continue updating your form and corresponding tests if needed (probably predominantly context providers or mocking),
-until all unit tests pass
-6. Ensure your relevant user flows still work with integration and/or end-to-end tests, and manual testing
+until all unit tests pass.
+6. Ensure your relevant user flows still work with integration and/or end-to-end tests, and manual testing.
 
 ### Cleanup
 
-1. Remove your dependency to Formik 🚮
-2. Remove any references to (now hopefully unused) Formik-aware code
-3. Release and deploy a new version of your project free of Formik at last
+1. Remove your dependency to Formik. 🚮
+2. Remove any references to (now hopefully unused) Formik-aware code.
+3. Release and deploy a new version of your project free of Formik at last.
 
 🎉 You did it! Cheers to you! 🎉
 
@@ -265,14 +265,14 @@ until all unit tests pass
 Below is a list of equivalent or near-equivalent utilities. Did you encounter one that's missing? Please open a PR to 
 this guide and add it!
 
-| Formik                                                               | React Hook Form                                                                                                                                                                                                 | Additional details                                                                                                                                                                                                                                                                                                                                                                                                                                   |
-|----------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [`<Formik />`](https://formik.org/docs/api/formik)                   | [`useForm()`](https://react-hook-form.com/docs/useform/)                                                                                                                                                         | If you were using `<Formik />` as a context provider in your tests, consider [`<FormProvider />`](https://react-hook-form.com/docs/formprovider/) to do the same with React Hook Form                                                                                                                                                                                                                                                                 |
-| [`useFormik()`](https://formik.org/docs/api/useFormik)               | [`useForm()`](https://react-hook-form.com/docs/useform/)                                                                                                                                                         |                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
-| [`withFormik()`](https://formik.org/docs/api/withFormik)             | [`useForm()`](https://react-hook-form.com/docs/useform/)                                                                                                                                                         |                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
-| [`<Field />`](https://formik.org/docs/api/field)                     | `useForm()`'s [`register`](https://react-hook-form.com/docs/useform/register/) utility                                                                                                                           |                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
-| [`useField()`](https://formik.org/docs/api/useField)                 | [`useController()`](https://react-hook-form.com/docs/usecontroller/)                                                                                                                                             |                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
-| [`useFormikContext()`](https://formik.org/docs/api/useFormikContext) | [`useFormContext()`](https://react-hook-form.com/docs/useformcontext/) <br /> [`useFormState()`](https://react-hook-form.com/docs/useformstate/) <br /> [`useWatch()`](https://react-hook-form.com/docs/usewatch/) | `useFormContext()` provides access to everything that your top-level `useForm()` hook provides. This is where most of your utilties are for imperatively interacting with the form. <br /> `useFormState()` provides meta information about the form's current state (like touched state, errors, submitCount, validation status, etc. <br /> `useWatch()` enables realtime access to a field's value (see [rendering](#rendering) for more details) |
+| Formik                                                               | React Hook Form                                                                                                                                                                                                     | Additional details                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+|----------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [`<Formik />`](https://formik.org/docs/api/formik)                   | [`useForm()`](https://react-hook-form.com/docs/useform/)                                                                                                                                                            | If you were using `<Formik />` as a context provider in your tests, consider [`<FormProvider />`](https://react-hook-form.com/docs/formprovider/) to do the same with React Hook Form                                                                                                                                                                                                                                                                 |
+| [`useFormik()`](https://formik.org/docs/api/useFormik)               | [`useForm()`](https://react-hook-form.com/docs/useform/)                                                                                                                                                            |                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| [`withFormik()`](https://formik.org/docs/api/withFormik)             | [`useForm()`](https://react-hook-form.com/docs/useform/)                                                                                                                                                            |                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| [`<Field />`](https://formik.org/docs/api/field)                     | `useForm()`'s [`register`](https://react-hook-form.com/docs/useform/register/) utility                                                                                                                              |                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| [`useField()`](https://formik.org/docs/api/useField)                 | [`useController()`](https://react-hook-form.com/docs/usecontroller/)                                                                                                                                                |                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| [`useFormikContext()`](https://formik.org/docs/api/useFormikContext) | [`useFormContext()`](https://react-hook-form.com/docs/useformcontext/) <br /> [`useFormState()`](https://react-hook-form.com/docs/useformstate/) <br /> [`useWatch()`](https://react-hook-form.com/docs/usewatch/)  | `useFormContext()` provides access to everything that your top-level `useForm()` hook provides. This is where most of your utilties are for imperatively interacting with the form. <br /> `useFormState()` provides meta information about the form's current state (like touched state, errors, submitCount, validation status, etc. <br /> `useWatch()` enables realtime access to a field's value (see [rendering](#rendering) for more details)  |
 
 There are a lot of hooks, components, utilities, terms, and techniques in each of these libraries. React Hook Form can get
 much more advanced than this guide covers. Make sure to check out official documentation for [TypeScript support](https://react-hook-form.com/ts/)
@@ -293,7 +293,7 @@ currently keenly aware of as this is the _only_ section of this guide where we d
 Shortening references to "Hook Form" or "RHF" is recommended. Pick a convention and go with it, no one will blame you.
 
 The two libraries use similar, but not identical, terminology to reference the same concepts (e.g. Formik's 
-[initialValues](https://formik.org/docs/api/formik#initialvalues-values) vs React Hook Form's [defaultValues](https://react-hook-form.com/docs/useform/#defaultValues))
+[initialValues](https://formik.org/docs/api/formik#initialvalues-values) vs React Hook Form's [defaultValues](https://react-hook-form.com/docs/useform/#defaultValues)).
 
 ### Rendering
 
@@ -316,8 +316,8 @@ schema.
 Where Formik provides [insight into the magic encapsulated in its form submission process](https://formik.org/docs/guides/form-submission),
 React Hook Form is [a little less explicit in this area](https://react-hook-form.com/docs/useform/handlesubmit/).
 
-Formik uses a single submit handler callback during submission. React Hook Form separates the SubmitHandler (the 
-callback to run on submit with no validation errors) from a SubmitErrorHandler (the callback to run on submit when 
+Formik uses a single submit handler callback during submission. React Hook Form separates the `SubmitHandler` (the 
+callback to run on submit with no validation errors) from a `SubmitErrorHandler` (the callback to run on submit when 
 validation errors occur).
 
 The structure of the submitted values object is fortunately identical to that of Formik, so everything downstream of
