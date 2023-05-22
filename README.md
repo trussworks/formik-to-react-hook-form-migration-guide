@@ -217,7 +217,7 @@ version of your component is the fastest way to create a tight feedback loop on 
    - If you use [Storybook](https://storybook.js.org/), it can also be a great way to manually sanity test your
    component with a reasonable feedback loop.
 4. Replace Formik hooks and utilities with the React Hook Form equivalents, extract the necessary return props, and 
-ensure they are properly wired into your resulting markup .
+ensure they are properly wired into your resulting markup.
 5. Once all Formik references have been removed, iterate on your tests and the component as necessary until all tests
 pass.
 
