@@ -191,7 +191,7 @@ a React Hook Form equivalent that you can use to rebuild your form. If you want 
 component built with React Hook Form might look like, check out [this one](https://github.com/trussworks/unemployment-insurance-modernization-demo/blob/main/src/components/form/fields/YesNoQuestion/YesNoQuestion.tsx)
 and the [corresponding unit tests](https://github.com/trussworks/unemployment-insurance-modernization-demo/blob/main/src/components/form/fields/YesNoQuestion/YesNoQuestion.test.tsx)
 in our [Unemployment Insurance Modernization Demo](https://github.com/trussworks/unemployment-insurance-modernization-demo/)
-repository.
+repository. This repo also contains a [sample diff of a custom Formik text field being converted to its React Hook Form equivalent](./examples/component/component-example.md).
 
 Since the form library that these components use is probably an implementation detail, start your component migration
 with the following goal in mind:
