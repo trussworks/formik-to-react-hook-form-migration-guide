@@ -2,7 +2,7 @@
 
 > **Note**
 > 
-> 2 years after the previous Formik update and not long after the release of this guide, Formik released new versions.
+> 2 years after the previous Formik release and not long after the release of this guide, Formik released new versions.
 > It appears that there is some renewed Formik development and maintenance activity for now. 
 > Rather than re-writing the contents of this guide, simply know that it may now sound alarmist. So long as Formik
 > continues to release dependency and compatability updates, it remains a viable choice.
